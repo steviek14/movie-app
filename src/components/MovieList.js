@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import StarRating from './Stars'; // Ensure the import path is correct
+import StarRating from './Stars'; // Import the StarRating component 
 
+//Define a functional component MovieList that takes props movies 
 const MovieList = ({ movies }) => {
+    //State to store movie rating, initalized as an empty object 
   const [movieRatings, setMovieRatings] = useState({});
-
+//Function to handle changes in movie ratings
   const handleRatingChange = (movieId, newRating) => {
+    //update movieratings state with the n ew rating for specified movieID
     setMovieRatings({ ...movieRatings, [movieId]: newRating });
   };
-
+//If there are no movies or movies array is empty, render a message
   if (!movies || movies.length === 0) {
     return <div>No movies found.</div>;
   }
-
+//Render the component 
   return (
     <>
       {movies.map(movie => (

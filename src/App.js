@@ -1,15 +1,18 @@
+//imports
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import MovieList from "./components/MovieList";
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import './App.css'; 
+import MovieList from "./components/MovieList"; 
 import MovieListHeading from "./components/MovieListHeading";
 import SearchBox from "./components/SearchBox";
 
+//Define functional component App
 const App = () => {
-  const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
+  //State variables using useState hook
+  const [movies, setMovies] = useState([]); //state to store list of movies 
+  const [searchValue, setSearchValue] = useState(''); //State to store search input value 
 
-  // Hard-coded object of movies
+  // Hard-coded object array of movies data 
   const movieData = [
     {
       Title: "The Shawshank Redemption",
@@ -46,20 +49,20 @@ const App = () => {
    
 
   ];
-
+//useEffect hook it inialize movies state with movieData array when component mounts 
   useEffect(() => {
-    // Initialize with all movies
-    setMovies(movieData);
+    setMovies(movieData); //Set inital movies state 
   }, []);
-
+//Function to handle search input change
   const handleSearch = (value) => {
-    setSearchValue(value);
+    setSearchValue(value); //update search input value state 
+    //Filter movies based on search input value 
     const filteredMovies = movieData.filter(movie =>
-      movie.Title.toLowerCase().includes(value.toLowerCase())
+      movie.Title.toLowerCase().includes(value.toLowerCase()) //update movies state with filtered movies 
     );
     setMovies(filteredMovies);
   };
-
+//Render the component 
   return (
     <div className="container-fluid movie-app">
       <div className="row d-flex align-items-center mt-4 mb-4">
